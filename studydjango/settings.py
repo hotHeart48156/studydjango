@@ -40,14 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'users.apps.UsersConfig',
-    # 'operations.apps.OperationsConfig',
-    # 'orgs.apps.OrgsConfig',
-    # 'courses.apps.CoursesConfig',
-    'users',
-    'operations',
-    'orgs',
-    'courses',
+    'users.apps.UsersConfig',
+    'operations.apps.OperationsConfig',
+    'orgs.apps.OrgsConfig',
+    'courses.apps.CoursesConfig',
+    # 'users',
+    # 'operations',
+    # 'orgs',
+    # 'courses',
 
 ]
 
