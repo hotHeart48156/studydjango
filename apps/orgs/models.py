@@ -26,7 +26,7 @@ class org_info(models.Model):
     love_num = models.IntegerField(default=0, verbose_name="收藏数")
     click_num = models.IntegerField(default=0, verbose_name="访问量")
     category = models.CharField(verbose_name="机构类别", choices=(
-        ('peixinjigou', '培训机构'), ('gx', "高校"), ('gr', "个人")), max_length=10)
+        ('peixinjigou', '培训机构'), ('gx', "高校"), ('gr', "个人")), max_length=100)
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
     cityInfo = models.ForeignKey(city_info, verbose_name="所在城市",on_delete=models.CASCADE)
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.db import models
-from apps.orgs.models import org_info,teacher_info
+from orgs.models import org_info,teacher_info
 
 # Create your models here.
 class course_info(models.Model):
@@ -13,7 +13,7 @@ class course_info(models.Model):
     click_number=models.IntegerField(default=0,verbose_name="访问数量")
     desc=models.CharField(max_length=200,verbose_name="课程简介")
     detail=models.TextField(verbose_name="课程详情")
-    category=models.CharField(choices=( ("qd","前端"),("hd","后端")  ),default="qd",verbose_name="课程类型")
+    category=models.CharField(choices=( ("qd","前端"),("hd","后端")  ),default="qd",verbose_name="课程类型",max_length=10)
     course_notice=models.CharField(verbose_name="课程公告",max_length=200)
     course_need=models.CharField(max_length=100,verbose_name="课程须知")
     tercher_tel=models.CharField(max_length=11,verbose_name="讲师教导")

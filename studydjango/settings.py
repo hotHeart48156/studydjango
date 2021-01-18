@@ -91,7 +91,7 @@ DATABASES = {
         'USER':'root',
         'PASSWORD':'yang',
         'HOST':'localhost',
-        'PORT':'3306'
+        'PORT':'3306',
     }
 }
 
@@ -127,6 +127,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
+
+AUTH_USER_MODEL = 'users.UserProfile'
 
 
 # Static files (CSS, JavaScript, Images)

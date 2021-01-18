@@ -1,8 +1,8 @@
 from enum import unique
 
 from django.core.checks import messages
-from apps.courses.models import course_info
-from apps.users.models import UserProfile
+from courses.models import course_info
+from users.models import UserProfile
 from os import name
 from django.db import models
 from datetime import datetime
@@ -19,30 +19,30 @@ class user_ask(models.Model):
         verbose_name="用户咨询信息"
         verbose_name_plural=verbose_name
 class user_love(models.Model):
-    lobe_man=models.ForeignKey(UserProfile,verbose_name="收藏用户")
+    love_man=models.ForeignKey(UserProfile,verbose_name="收藏用户",on_delete=models.CASCADE)
     love_id=models.IntegerField(verbose_name="收藏id")
-    love_type=models.CharField(choices=(("1","org"),("2","course"),("3","teacher")  ),verbose_name="收藏类型")
-    lobe_status=models.BooleanField(default=False,verbose_name="收藏状态")
+    love_type=models.CharField(choices=(("1","org"),("2","course"),("3","teacher")  ),verbose_name="收藏类型",max_length=10)
+    love_status=models.BooleanField(default=False,verbose_name="收藏状态")
     add_time=models.DateTimeField(default=datetime.now,verbose_name="添加时间")
     def __str__(self):
-        return self.name
+        return self.love_man
     class Meta:
         verbose_name="用户收藏信息"
         verbose_name_plural=verbose_name
 class user_course(models.Model):
-    study_man=models.ForeignKey(UserProfile,verbose_name="学习用户")
-    study_course=models.ForeignKey(course_info,verbose_name="学习课程")
+    study_man=models.ForeignKey(UserProfile,verbose_name="学习用户",on_delete=models.CASCADE)
+    study_course=models.ForeignKey(course_info,verbose_name="学习课程",on_delete=models.CASCADE)
     add_time=models.DateTimeField(default=datetime.now,verbose_name="学习时间")
 
     def __str__(self):
         return self.study_man
     class Meta:
-        unique={"study_man","study_course"}
+        # unique={"study_man","study_course"}
         verbose_name="用户学习课程信息"
         verbose_name_plural=verbose_name
 class user_comment(models.Model):
-    comment_man=models.ForeignKey(UserProfile,verbose_name="学习用户")
-    comment_course=models.ForeignKey(course_info,verbose_name="学习课程")
+    comment_man=models.ForeignKey(UserProfile,verbose_name="学习用户",on_delete=models.CASCADE)
+    comment_course=models.ForeignKey(course_info,verbose_name="学习课程",on_delete=models.CASCADE)
     comment_content=models.CharField(max_length=300,verbose_name="评论内容")
     add_time=models.DateTimeField(default=datetime.now,verbose_name="学习时间")
     def __str__(self):
