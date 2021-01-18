@@ -17,14 +17,11 @@ from django.contrib import admin
 from django.contrib.admin.sites import site
 from django.urls import path
 from django.conf.urls import url, include
-import apps.users
-import xadmin
 urlpatterns = [
 
-    path('admin/',xadmin.site.urls),
-    path('users/', include('users.url', namespace='users')),
-    path('orgs/', include('orgs.url', namespace='orgs')),
-    path('operations/', include('operation.url', namespace='operations')),
-    path('course/', include('course.url', namespace='course')),
+    path('users/', include(('users.urls','users'), namespace='users')),
+    path('orgs/', include(('orgs.urls','orgs'), namespace='orgs')),
+    path('operations/', include(('operations.urls','operations'), namespace='operations')),
+    path('courses/', include(('courses.urls','courses'), namespace='course')),
 
 ]
